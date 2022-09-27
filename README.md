@@ -7,7 +7,7 @@ You can change these if you want in the `docker-compose.yml` file.
 To start the docker container run these commands:
    -  Build the container and start `nvim`
       ```sh
-      docker-compose up -d
+      docker-compose up --build --detach
       docker-compose exec machine nvim
       ```
    -  Alternatively, you start a bash shell instead, then run `nvim`
