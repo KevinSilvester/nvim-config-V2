@@ -63,7 +63,7 @@ end
 
 
 ------------------------------------------------------------------------
---                             python host                            --
+--                            python host                             --
 ------------------------------------------------------------------------
 if vim.g.is_win and utils.executable("scoop") then
    vim.g.python_host_prog = fn.expand("~/scoop/apps/python/current/python.exe")
