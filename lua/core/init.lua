@@ -48,6 +48,7 @@ vim.g.loaded_netrwFileHandlers = 1
 
 local pack = require("core.pack")
 
+require("core.global")
 pack.ensure_plugins()
 require("core.options")
 pack.load_compile()
