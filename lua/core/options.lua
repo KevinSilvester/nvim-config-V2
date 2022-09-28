@@ -130,11 +130,13 @@ vim.opt.runtimepath:append(vim.fn.stdpath("data") .. "/site/parsers")
 if vim.opt.filetype == "python" then
    vim.opt.shiftwidth = 4
    vim.opt.tabstop = 4
+   vim.opt.softtabstop = 4
 end
 
 if vim.opt.filetype == "yaml" then
    vim.opt.shiftwidth = 3
    vim.opt.tabstop = 3
+   vim.opt.softtabstop = 3
 end
 
 
