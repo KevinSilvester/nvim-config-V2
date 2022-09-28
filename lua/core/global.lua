@@ -1,11 +1,12 @@
 local utils = require("core.utils")
+local fn = vim.fn
 
 ------------------------------------------------------------------------
 --                          custom variables                          --
 ------------------------------------------------------------------------
-vim.g.is_win = (vim.loop.os_uname().sysname == "Widnows_NT") and true or false
+vim.g.is_win   = (vim.loop.os_uname().sysname == "Widnows_NT") and true or false
 vim.g.is_linux = (vim.loop.os_uname().sysname == "Linux") and true or false
-vim.g.is_mac = (vim.loop.os_uname().sysname == "Darwin") and true or false
+vim.g.is_mac   = (vim.loop.os_uname().sysname == "Darwin") and true or false
 vim.g.catppuccin_flavour = "mocha"
 vim.g.material_style = "deep ocean"
 
@@ -29,7 +30,7 @@ end
 
 
 ------------------------------------------------------------------------
---                          clipboard in WSL                          --
+--                    clipboard in WSL and MacOS                      --
 ------------------------------------------------------------------------
 if vim.fn.has("wsl") then
    vim.g.clipboard = {
@@ -41,6 +42,7 @@ if vim.fn.has("wsl") then
          ["+"] = "win32yank.exe -o --lf",
          ["*"] = "win32yank.exe -o --lf",
       },
+      cache_enabled = 0,
    }
 end
 
@@ -57,6 +59,24 @@ if vim.g.is_mac then
       },
       cache_enabled = 0,
    }
+end
+
+
+------------------------------------------------------------------------
+--                             python host                            --
+------------------------------------------------------------------------
+if vim.g.is_win and utils.executable("scoop") then
+   vim.g.python_host_prog = fn.expand("~/scoop/apps/python/current/python.exe")
+   vim.g.python3_host_prog = fn.expand("~/scoop/shims/python3.exe")
+end
+
+if vim.g.is_linux then
+   local has_brew = utils.executable("brew")
+   vim.g.python_host_prog = "/usr/bin/python"
+   vim.g.python3_host_prog = has_brew and "/home/linuxbrew/.linuxbrew/bin/python3" or "/usr/bin/python3"
+end
+
+if vim.g.is_mac then
    vim.g.python_host_prog = "/usr/bin/python"
    vim.g.python3_host_prog = "/usr/local/bin/python3"
 end
@@ -81,4 +101,3 @@ vim.g.minimap_auto_start = 0
 vim.g.minimap_auto_start_win_enter = 0
 vim.g.minimap_highlight_range = 0
 vim.g.minimap_git_colors = 1
-
