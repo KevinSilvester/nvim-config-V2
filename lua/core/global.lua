@@ -23,7 +23,7 @@ vim.env.PATH = vim.env.PATH
 ------------------------------------------------------------------------
 --                          filetype loader                           --
 ------------------------------------------------------------------------
-if vim.version().minor < 8 then
+if utils.is_nightly() then
    vim.g.did_load_filetypes = 0
    vim.g.do_filetype_lua = 1
 end

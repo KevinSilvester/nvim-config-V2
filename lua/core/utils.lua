@@ -12,24 +12,22 @@ local fn = vim.fn
 
 local M = {}
 
+M.is_nightly = function()
+   return vim.version().minor < 8
+end
+
 ---check whether executable is callable
 ---@param name string name of executable
 ---@return boolean
 M.executable = function(name)
-   if fn.executable(name) == 1 then
-      return true
-   end
-   return false
+   return fn.executable(name) == 1
 end
 
 ---check whether a feature exists in Nvim
 ---@param feat string the feature name, like `nvim-0.7` or `unix`
 ---@return boolean
 M.has = function(feat)
-   if fn.has(feat) == 1 then
-      return true
-   end
-   return false
+   return fn.has(feat) == 1
 end
 
 ---print vim.inspect output to a popup window/buffer
@@ -91,6 +89,23 @@ M.inspect = function(input, yank, open_split)
          vim.cmd(component.bufnr .. "b +%y")
       end
    end, 750)
+end
+
+------------------------------------------------------------------------
+--                            fs helpers                              --
+------------------------------------------------------------------------
+M.fs = {}
+
+M.fs.is_dir = function(path)
+   return fn.isdirectory(path) == 1
+end
+
+M.fs.is_file = function(path)
+   return fn.filereadable(path) == 1
+end
+
+M.fs.is_link = function(path)
+   return fn.isdirectory(path) == 2
 end
 
 
