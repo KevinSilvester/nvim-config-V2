@@ -48,8 +48,8 @@ vim.g.loaded_netrwFileHandlers = 1
 
 local pack = require("core.pack")
 
-require("core.global")
 pack.ensure_plugins()
+require("core.global")
 require("core.options")
 pack.load_compile()
 require("keymap")

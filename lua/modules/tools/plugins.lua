@@ -11,3 +11,14 @@ plugin({
       { "nvim-telescope/telescope-fzy-native.nvim", opt = true },
    },
 })
+
+plugin({
+   "nvim-telescope/telescope-fzf-native.nvim",
+   after = "telescope.nvim",
+   run = "make",
+})
+
+plugin({
+   "MunifTanjim/nui.nvim",
+   commit = "e9889bbd9919544697d497537acacd9c67d0de99",
+})

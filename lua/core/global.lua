@@ -1,11 +1,11 @@
-local utils = require("utils")
+local utils = require("core.utils")
 
 ------------------------------------------------------------------------
 --                          custom variables                          --
 ------------------------------------------------------------------------
-vim.g.is_win = (utils.has("win32") or utils.has("win64")) and true or false
-vim.g.is_linux = (utils.has("unix") and (not utils.has("macunix"))) and true or false
-vim.g.is_mac = utils.has("macunix") and true or false
+vim.g.is_win = (vim.loop.os_uname().sysname == "Widnows_NT") and true or false
+vim.g.is_linux = (vim.loop.os_uname().sysname == "Linux") and true or false
+vim.g.is_mac = (vim.loop.os_uname().sysname == "Darwin") and true or false
 vim.g.catppuccin_flavour = "mocha"
 vim.g.material_style = "deep ocean"
 
