@@ -17,7 +17,7 @@ vim.opt.virtualedit = "block"
 vim.opt.encoding = "utf-8"
 vim.opt.viewoptions = "folds,cursor,curdir,slash,unix"
 vim.opt.wildignore = ".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**"
-
+vim.opt.runtimepath:append(vim.fn.stdpath("data") .. "/site/parsers")
 
 ------------------
 -- Line Numbers --
@@ -121,7 +121,7 @@ vim.opt.showcmd = false
 vim.opt.signcolumn = "yes"       -- always show the sign column, otherwise it would shift the text each time
 vim.opt.fillchars.eob = " "      -- characters to fill the stauslines and verticals separators
 vim.opt.conceallevel = 0         -- so that `` is visible in mardkown files
-vim.opt.runtimepath:append(vim.fn.stdpath("data") .. "/site/parsers")
+vim.opt.guicursor = "n-v-c:block-Cursor,i-ci-ve:ver25-Cursor,r-cr-o:hor20-Cursor"
 
 
 ----------------
