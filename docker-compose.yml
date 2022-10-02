@@ -1,12 +1,15 @@
-version: "3"
+version: "3.9" 
+
 services:
    machine:
-      container_name: nvim-config-V2
       build: .
-      stdin_open: true
-      tty: true
-      command: /bin/bash
+      container_name: nvim-config
+      image: nvim-config:machine
+      init: true
       ports:
          - 8080:3000
       volumes:
          - .:/root/.config/nvim
+      stdin_open: true
+      tty: true
+      command: /bin/bash
