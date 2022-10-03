@@ -1,7 +1,7 @@
 local utils = require("core.utils")
 
 -- Create cache dir and subs dir
--- local ufs = utils.fs
+local ufs = utils.fs
 local cache_dir = vim.fn.stdpath("cache")
 
 local createdir = function()
@@ -13,11 +13,11 @@ local createdir = function()
       cache_dir .. "/undo",
    }
 
-   if not utils.fs.is_dir(cache_dir) then
-      utils.fs.mkdir(cache_dir)
+   if not ufs.is_dir(cache_dir) then
+      ufs.mkdir(cache_dir)
       for _, v in pairs(data_dir) do
-         if not utils.fs.is_dir(v) then
-            utils.fs.mkdir(v)
+         if not ufs.is_dir(v) then
+            ufs.mkdir(v)
          end
       end
    end
