@@ -29,7 +29,7 @@ createdir()
 require("core.global")
 require("core.options")
 
--- Set up packer
+-- load plugins
 local pack = require("core.pack")
 pack.ensure_plugins()
 pack.load_compile()
