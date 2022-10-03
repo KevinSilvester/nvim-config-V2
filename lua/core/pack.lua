@@ -62,20 +62,32 @@ function Packer:init_ensure_plugins()
       local cmd = "!git clone https://github.com/wbthomason/packer.nvim " .. packer_dir
       api.nvim_command(cmd)
       uv.fs_mkdir(data_dir .. "lua", 511, function()
-         assert("make compile path dir faield")
+         assert("make compile path dir failed")
       end)
       self:load_packer()
       packer.sync()
    end
 end
 
+function Packer:cli_compile()
+   self:load_packer()
+   packer.compile()
+   vim.defer_fn(function()
+     vim.cmd('q')
+   end, 1000)
+ end
+
+
 local plugins = setmetatable({}, {
    __index = function(_, key)
+      if key == 'Packer' then
+        return Packer
+      end
       if not packer then
-         Packer:load_packer()
+        Packer:load_packer()
       end
       return packer[key]
-   end,
+    end,
 })
 
 function plugins.ensure_plugins()
@@ -116,17 +128,17 @@ function plugins.load_compile()
    }
    for _, cmd in ipairs(cmds) do
       api.nvim_create_user_command("Packer" .. cmd, function()
-         require("core.pack")[fn.tolower(cmd)]()
+         plugins[cmd:lower()]()
       end, {})
    end
 
-   local PackerHooks = vim.api.nvim_create_augroup("PackerHooks", {})
+   local PackerHooks = vim.api.nvim_create_augroup("PackerHooks", { clear = true })
    vim.api.nvim_create_autocmd("User", {
+      group = PackerHooks,
       pattern = "PackerCompileDone",
       callback = function()
          vim.notify("Compile Done!", vim.log.levels.INFO, { title = "Packer" })
       end,
-      group = PackerHooks,
    })
 end
 
