@@ -36,7 +36,9 @@ function Packer:load_packer()
       git = { clone_timeout = 120 },
       disable_commands = true,
       display = {
-         open_fn = require("packer.util").float,
+         open_fn = function()
+            return require("packer.util").float({ border = "rounded" })
+         end,
          working_sym = "ﰭ",
          error_sym = "",
          done_sym = "",

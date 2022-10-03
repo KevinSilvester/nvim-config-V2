@@ -1,13 +1,3 @@
-local popup_ok, Popup = pcall(require, "nui.popup")
-if not popup_ok then
-   return
-end
-
-local split_ok, Split = pcall(require, "nui.split")
-if not split_ok then
-   return
-end
-
 local fn = vim.fn
 
 local M = {}
@@ -20,7 +10,10 @@ end
 ---@param name string name of executable
 ---@return boolean
 M.executable = function(name)
-   return fn.executable(name) == 1
+   if fn.executable(name) == 1 then
+      return true
+   end
+   return false
 end
 
 ---check whether a feature exists in Nvim
@@ -36,6 +29,15 @@ end
 ---@param open_split boolean|nil whether to use popup window
 ---@return nil
 M.inspect = function(input, yank, open_split)
+   local popup_ok, Popup = pcall(require, "nui.popup")
+   if not popup_ok then
+      return
+   end
+
+   local split_ok, Split = pcall(require, "nui.split")
+   if not split_ok then
+      return
+   end
    if input == nil then
       vim.notify("No input provided", vim.log.levels.WARN, { title = "nvim-config" })
       return
@@ -108,6 +110,20 @@ M.fs.is_link = function(path)
    return fn.isdirectory(path) == 2
 end
 
+M.fs.mkdir = function(path)
+   local cmd = function()
+      local tbl = { "mkdir" }
+      if not vim.g.is_win then
+         table.insert(tbl, "-p")
+      end
+      table.insert(tbl, path)
+      return table.concat(tbl, " ")
+   end
+
+   if not M.fs.is_dir(path) then
+      os.execute(cmd())
+   end
+end
 
 -- stylua: ignore
 ------------------------------------------------------------------------

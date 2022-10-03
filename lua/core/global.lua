@@ -63,7 +63,7 @@ end
 
 
 ------------------------------------------------------------------------
---                            python host                             --
+--                           python host                              --
 ------------------------------------------------------------------------
 if vim.g.is_win and utils.executable("scoop") then
    vim.g.python_host_prog = fn.expand("~/scoop/apps/python/current/python.exe")
@@ -83,7 +83,7 @@ end
 
 
 ------------------------------------------------------------------------
---                          neovide options                           --
+--                         neovide options                            --
 ------------------------------------------------------------------------
 if vim.fn.exists("g:neovide") then
    vim.g.neovide_refresh_rate = 60
@@ -94,10 +94,33 @@ end
 
 
 ------------------------------------------------------------------------
---                          minimap options                           --
+--                         minimap options                            --
 ------------------------------------------------------------------------
 vim.g.minimap_width = 20
 vim.g.minimap_auto_start = 0
 vim.g.minimap_auto_start_win_enter = 0
 vim.g.minimap_highlight_range = 0
 vim.g.minimap_git_colors = 1
+
+
+------------------------------------------------------------------------
+--                  disable distribution plugins                      --
+------------------------------------------------------------------------
+vim.g.loaded_gzip = 1
+vim.g.loaded_tar = 1
+vim.g.loaded_tarPlugin = 1
+vim.g.loaded_zip = 1
+vim.g.loaded_zipPlugin = 1
+vim.g.loaded_getscript = 1
+vim.g.loaded_getscriptPlugin = 1
+vim.g.loaded_vimball = 1
+vim.g.loaded_vimballPlugin = 1
+vim.g.loaded_matchit = 1
+vim.g.loaded_matchparen = 1
+vim.g.loaded_2html_plugin = 1
+vim.g.loaded_logiPat = 1
+vim.g.loaded_rrhelper = 1
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+vim.g.loaded_netrwSettings = 1
+vim.g.loaded_netrwFileHandlers = 1
