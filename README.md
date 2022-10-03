@@ -1,7 +1,7 @@
 ### Run in Docker
 
 If you'd like to test/preview this neovim without affecting your existing configuration, you run this is a docker-container.
-By default the container name is `nvim-config-V2` and the service name `machine`.
+By default the container name is `nvim-config` and the service name `machine`.
 You can change these if you want in the `docker-compose.yml` file.
 
 To start the docker container run these commands:
