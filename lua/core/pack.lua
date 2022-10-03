@@ -73,21 +73,20 @@ function Packer:cli_compile()
    self:load_packer()
    packer.compile()
    vim.defer_fn(function()
-     vim.cmd('q')
+      vim.cmd("q")
    end, 1000)
- end
-
+end
 
 local plugins = setmetatable({}, {
    __index = function(_, key)
-      if key == 'Packer' then
-        return Packer
+      if key == "Packer" then
+         return Packer
       end
       if not packer then
-        Packer:load_packer()
+         Packer:load_packer()
       end
       return packer[key]
-    end,
+   end,
 })
 
 function plugins.ensure_plugins()
