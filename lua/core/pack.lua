@@ -5,6 +5,8 @@ local modules_dir = vim_path .. "/lua/modules"
 local packer_compiled = data_dir .. "lua/packer_compiled.lua"
 local packer = nil
 
+--
+-- Packer wrapper
 local Packer = {}
 Packer.__index = Packer
 
@@ -77,6 +79,8 @@ function Packer:cli_compile()
    end, 1000)
 end
 
+--
+-- Wrapper inteface
 local plugins = setmetatable({}, {
    __index = function(_, key)
       if key == "Packer" then
@@ -94,11 +98,14 @@ function plugins.ensure_plugins()
 end
 
 function plugins.register_plugin(repo)
+   if not Packer.repos then
+      Packer.repos = {}
+   end
    table.insert(Packer.repos, repo)
 end
 
 function plugins.auto_compile()
-   local file = vim.fn.expand("%:p")
+   local file = api.nvim_buf_get_name(0)
    if not file:match(vim_path) then
       return
    end

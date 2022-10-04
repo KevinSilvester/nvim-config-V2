@@ -5,7 +5,6 @@ plugin({
    "nvim-treesitter/nvim-treesitter",
    event = "BufRead",
    run = ":TSUpdate",
-   after = "telescope.nvim",
    config = conf.nvim_treesitter,
 })
 

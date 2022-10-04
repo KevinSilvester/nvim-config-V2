@@ -1,0 +1,17 @@
+{
+   "Lua.diagnostics.globals": [
+      "vim",
+      "table",
+      "setmetatable",
+      "require",
+      "assert",
+      "ipairs",
+      "pairs",
+      "print",
+      "string",
+      "type",
+      "pcall",
+      "os",
+      "math"
+   ]
+}

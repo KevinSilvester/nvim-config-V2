@@ -5,11 +5,8 @@ plugin({
    "nvim-telescope/telescope.nvim",
    cmd = "Telescope",
    config = conf.telescope,
-   requires = {
-      { "nvim-lua/popup.nvim", opt = true },
-      { "nvim-lua/plenary.nvim", opt = true },
-      { "nvim-telescope/telescope-fzy-native.nvim", opt = true },
-   },
+   opt = true,
+   after = { "plenary.nvim", "popup.nvim", "nvim-web-devicons", "nvim-treesitter" },
 })
 
 plugin({
@@ -18,7 +15,4 @@ plugin({
    run = "make",
 })
 
-plugin({
-   "MunifTanjim/nui.nvim",
-   commit = "e9889bbd9919544697d497537acacd9c67d0de99",
-})
+plugin({ "MunifTanjim/nui.nvim" })
