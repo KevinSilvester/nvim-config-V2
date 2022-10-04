@@ -5,6 +5,9 @@ local config = {
    which_key = function()
       require("modules.tools.which-key")
    end,
+   wilder = function()
+      require("modules.tools.wilder")
+   end,
 }
 
 return config

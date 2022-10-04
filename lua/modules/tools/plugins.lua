@@ -21,3 +21,5 @@ plugin({
 })
 
 plugin({ "MunifTanjim/nui.nvim" })
+
+plugin({ "gelguy/wilder.nvim", config = conf.wilder })
