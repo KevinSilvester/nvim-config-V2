@@ -10,10 +10,7 @@ end
 ---@param name string name of executable
 ---@return boolean
 M.executable = function(name)
-   if fn.executable(name) == 1 then
-      return true
-   end
-   return false
+   return fn.executable(name) == 1
 end
 
 ---check whether a feature exists in Nvim

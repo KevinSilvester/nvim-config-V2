@@ -15,4 +15,9 @@ plugin({
    run = "make",
 })
 
+plugin({
+   "folke/which-key.nvim",
+   config = conf.which_key,
+})
+
 plugin({ "MunifTanjim/nui.nvim" })

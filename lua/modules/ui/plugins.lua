@@ -9,13 +9,20 @@ plugin({ "rebelot/kanagawa.nvim" })
 plugin({ "marko-cerovac/material.nvim" })
 plugin({ "olimorris/onedarkpro.nvim" })
 
-plugin({ "goolord/alpha-nvim", config = conf.dashboard, requires = "kyazdani42/nvim-web-devicons" })
+plugin({
+   "goolord/alpha-nvim",
+   config = conf.dashboard,
+   requires = "kyazdani42/nvim-web-devicons",
+})
 
-plugin({ "feline-nvim/feline.nvim", requires = "kyazdani42/nvim-web-devicons" })
+plugin({
+   "feline-nvim/feline.nvim",
+   requires = "kyazdani42/nvim-web-devicons",
+})
 
 plugin({
    "kyazdani42/nvim-tree.lua",
-   -- config = conf.nvim_tree,
+   config = conf.sidebar,
    requires = "kyazdani42/nvim-web-devicons",
 })
 

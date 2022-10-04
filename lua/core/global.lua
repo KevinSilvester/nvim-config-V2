@@ -32,7 +32,7 @@ end
 ------------------------------------------------------------------------
 --                    clipboard in WSL and MacOS                      --
 ------------------------------------------------------------------------
-if vim.fn.has("wsl") == 1 then
+if utils.has("wsl") then
    vim.g.clipboard = {
       copy = {
          ["+"] = "win32yank.exe -i --crlf",

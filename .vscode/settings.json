@@ -12,6 +12,10 @@
       "type",
       "pcall",
       "os",
-      "math"
+      "math",
+      "tonumber"
+   ],
+   "Lua.diagnostics.disable": [
+      "undefined-doc-name"
    ]
 }
