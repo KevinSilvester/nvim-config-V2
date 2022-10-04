@@ -8,8 +8,22 @@ nvim_tree.setup({
    },
    renderer = {
       root_folder_modifier = ":t",
-      indent_markers = { icons = { corner = "╰" } },
+      indent_markers = {
+         enable = true,
+         icons = {
+            corner = "╰",
+            edge = "│ ",
+            item = "│ ",
+            none = "  ",
+         }
+       },
       icons = {
+         show = {
+            git = true,
+            file = true,
+            folder = true,
+            folder_arrow = true,
+         },
          glyphs = {
             default = "",
             symlink = "",
