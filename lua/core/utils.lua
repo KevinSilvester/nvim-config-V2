@@ -129,6 +129,13 @@ end
 -- ref: https://github.com/catppuccin/nvim/blob/main/lua/catppuccin/utils/colors.lua
 M.colors = {}
 
+M.colors.get_highlight = function(group)
+   local hl = vim.api.nvim_get_hl_by_name(group, true)
+   local fg = string.format("#%x", hl.foreground)
+   local bg = string.format("#%x", hl.background)
+   return { fg = fg, bg = bg }
+end
+
 ---convert hex colour to rgb
 ---@param hex_str string hex colour (e.g.'#7E9CD8')
 ---@return table {r, g, b} color values
