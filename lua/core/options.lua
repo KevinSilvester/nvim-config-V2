@@ -119,9 +119,9 @@ vim.opt.pumheight = 10
 vim.opt.helpheight = 20
 vim.opt.previewheight = 12
 vim.opt.showcmd = false
-vim.opt.signcolumn = "yes"       -- always show the sign column, otherwise it would shift the text each time
-vim.opt.fillchars.eob = " "      -- characters to fill the stauslines and verticals separators
-vim.opt.conceallevel = 0         -- so that `` is visible in mardkown files
+vim.opt.signcolumn = "yes"                   -- always show the sign column, otherwise it would shift the text each time
+vim.opt.conceallevel = 0                     -- so that `` is visible in mardkown files
+vim.opt.fillchars:append({ eob = " " })      -- hide '~' at the end of the buffer
 vim.opt.guicursor = "n-v-c:block-Cursor,i-ci-ve:ver25-Cursor,r-cr-o:hor20-Cursor"
 
 
