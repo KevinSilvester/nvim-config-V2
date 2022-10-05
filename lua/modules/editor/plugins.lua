@@ -14,7 +14,7 @@ plugin({ "nvim-treesitter/nvim-treesitter-textobjects", after = "nvim-treesitter
 plugin({
    "windwp/nvim-spectre",
    after = { "plenary.nvim", "nvim-web-devicons" },
-   opt = true
+   opt = true,
 })
 
 plugin({

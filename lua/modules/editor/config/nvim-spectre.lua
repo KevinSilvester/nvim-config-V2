@@ -1,4 +1,4 @@
-require('spectre').setup({
+require("spectre").setup({
    live_update = true,
    default = {
       find = {
