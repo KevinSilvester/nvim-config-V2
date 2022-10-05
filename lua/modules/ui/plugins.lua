@@ -31,3 +31,8 @@ plugin({
    config = conf.bufferline,
    requires = "kyazdani42/nvim-web-devicons",
 })
+
+plugin({
+   "rcarriga/nvim-notify",
+   config = conf.notifications,
+})

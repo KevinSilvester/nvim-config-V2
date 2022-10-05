@@ -8,6 +8,9 @@ local config = {
    sidebar = function()
       require("modules.ui.config.sidebar")
    end,
+   notifications = function()
+      require("modules.ui.config.notifications")
+   end,
 }
 
 return config
