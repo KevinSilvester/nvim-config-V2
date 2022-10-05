@@ -44,3 +44,10 @@ plugin({
    after = "nui.nvim",
    config = conf.dressing,
 })
+
+plugin({
+   "akinsho/toggleterm.nvim",
+   opt = true,
+   cmd = "ToggleTerm",
+   config = conf.toggleterm,
+})

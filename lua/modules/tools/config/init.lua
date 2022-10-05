@@ -14,6 +14,9 @@ local config = {
    dressing = function()
       require("modules.tools.config.dressing")
    end,
+   toggleterm = function()
+      require("modules.tools.config.toggleterm")
+   end,
 }
 
 return config

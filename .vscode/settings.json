@@ -15,7 +15,8 @@
       "math",
       "tonumber",
       "tostring",
-      "packer_plugins"
+      "packer_plugins",
+      "_G"
    ],
    "Lua.diagnostics.disable": [
       "undefined-doc-name"
