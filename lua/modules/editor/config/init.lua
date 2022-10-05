@@ -17,4 +17,13 @@ return {
    comment = function()
       require("modules.editor.config.comment")
    end,
+   nvim_colorizer = function()
+      require("modules.editor.config.nvim-colorizer")
+   end,
+   nvim_surround = function()
+      require("modules.editor.config.nvim-surround")
+   end,
+   vim_illuminate = function()
+      require("modules.editor.config.vim-illuminate")
+   end,
 }

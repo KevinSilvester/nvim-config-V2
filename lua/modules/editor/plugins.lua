@@ -45,12 +45,22 @@ plugin({
       "JoosepAlviste/nvim-ts-context-commentstring",
       "folke/todo-comments.nvim",
    },
-   -- commit = "2c26a00f32b190390b664e56e32fd5347613b9e2"
 })
 
---[[
-   vim-surround
-   illuminate
-   comment
-   colorizer
-]]
+plugin({
+   "norcalli/nvim-colorizer.lua",
+   event = "BufRead",
+   config = conf.nvim_colorizer,
+})
+
+plugin({
+   "kylechui/nvim-surround",
+   event = "BufRead",
+   config = conf.nvim_surround,
+})
+
+plugin({
+   "RRethy/vim-illuminate",
+   event = "BufRead",
+   config = conf.vim_illuminate,
+})
