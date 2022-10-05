@@ -4,7 +4,6 @@ local utils = require("core.utils")
 
 plugin({
    "nvim-treesitter/nvim-treesitter",
-   event = "BufRead",
    run = ":TSUpdate",
    config = conf.nvim_treesitter,
 })
