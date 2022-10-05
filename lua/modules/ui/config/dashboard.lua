@@ -55,9 +55,6 @@ local headers = {
    },
 }
 
--- local M = {}
-
--- M.config = function()
 local alpha = require("alpha")
 local dashboard = require("alpha.themes.dashboard")
 
@@ -88,6 +85,3 @@ dashboard.section.buttons.opts.hl = "Keyword"
 dashboard.section.buttons.opts.position = "right"
 dashboard.opts.opts.noautocmd = true
 alpha.setup(dashboard.opts)
--- end
-
--- return M
