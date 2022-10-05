@@ -29,6 +29,9 @@ createdir()
 require("core.global")
 require("core.options")
 
+-- load autocmds
+require("core.autocmds")
+
 -- load plugins
 local pack = require("core.pack")
 pack.ensure_plugins()
