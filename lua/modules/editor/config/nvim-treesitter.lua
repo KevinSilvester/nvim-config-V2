@@ -13,6 +13,9 @@ require("nvim-treesitter.configs").setup({
       enable = true,
       disable = { "python", "css" },
    },
+   auto_pairs = {
+      enable = true,
+   },
    textobjects = {
       select = {
          enable = true,
