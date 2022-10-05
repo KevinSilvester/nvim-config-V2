@@ -13,7 +13,9 @@
       "pcall",
       "os",
       "math",
-      "tonumber"
+      "tonumber",
+      "tostring",
+      "packer_plugins"
    ],
    "Lua.diagnostics.disable": [
       "undefined-doc-name"

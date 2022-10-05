@@ -64,3 +64,9 @@ plugin({
    event = "BufRead",
    config = conf.vim_illuminate,
 })
+
+plugin({
+   "folke/todo-comments.nvim",
+   event = "BufRead",
+   config = conf.todo_comments,
+})

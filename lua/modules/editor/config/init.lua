@@ -26,4 +26,7 @@ return {
    vim_illuminate = function()
       require("modules.editor.config.vim-illuminate")
    end,
+   todo_comments = function()
+      require("modules.editor.config.todo-comments")
+   end,
 }
