@@ -8,6 +8,12 @@ local config = {
    wilder = function()
       require("modules.tools.config.wilder")
    end,
+   diffview = function()
+      require("modules.tools.config.diffview")
+   end,
+   dressing = function()
+      require("modules.tools.config.dressing")
+   end,
 }
 
 return config
