@@ -12,7 +12,8 @@ plugin({
 plugin({
    "nvim-telescope/telescope-fzf-native.nvim",
    after = "telescope.nvim",
-   run = "make",
+   run = "make clean && make",
+   config = function() require("telescope").load_extension("fzf") end
 })
 
 plugin({

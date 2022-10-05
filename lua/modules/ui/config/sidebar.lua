@@ -13,10 +13,10 @@ nvim_tree.setup({
          icons = {
             corner = "╰",
             edge = "│ ",
-            item = "│ ",
+            item = "├ ",
             none = "  ",
-         }
-       },
+         },
+      },
       icons = {
          show = {
             git = true,
