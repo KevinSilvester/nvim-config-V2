@@ -10,6 +10,7 @@ end
 
 local setup = require("lsp.setup")
 setup.handlers()
+setup.diagnostics()
 
 local default_opts = {
    on_attach = setup.on_attach,
