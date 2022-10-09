@@ -8,12 +8,14 @@ plugin({
 
 plugin({
    "vuki656/package-info.nvim",
+   event = { "BufRead package.json" },
    after = "nui.nvim",
    config = conf.package_info,
 })
 
 plugin({
    "saecki/crates.nvim",
+   event = { "BufRead Cargo.toml" },
    requires = { "nvim-lua/plenary.nvim" },
    config = conf.crates,
 })

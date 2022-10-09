@@ -1,11 +1,11 @@
 local plugin = require("core.pack").register_plugin
 local conf = require("modules.completion.config")
 
-plugin({
-   "neovim/nvim-lspconfig",
-   ft = { "lua", "rust", "c", "cpp" },
-   config = conf.nvim_lsp,
-})
+-- plugin({
+--    "neovim/nvim-lspconfig",
+--    ft = { "lua", "rust", "c", "cpp" },
+--    config = conf.nvim_lsp,
+-- })
 
 plugin({ "L3MON4D3/LuaSnip", event = "InsertEnter", config = conf.lua_snip })
 plugin({ "rafamadriz/friendly-snippets", event = "InsertEnter" })

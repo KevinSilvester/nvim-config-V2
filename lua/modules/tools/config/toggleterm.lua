@@ -28,7 +28,6 @@ end
 
 vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
 
-
 -- Custom terminal windows
 -- local Terminal = require("toggleterm.terminal").Terminal
 

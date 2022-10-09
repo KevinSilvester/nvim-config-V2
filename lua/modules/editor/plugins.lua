@@ -20,13 +20,21 @@ plugin({
 plugin({
    "wfxr/minimap.vim",
    run = "cargo install --locked code-minimap",
-   event = "BufRead",
+   opt = true,
    config = conf.minimap,
+   cmd = {
+      "Minimap",
+      "MinimapClose",
+      "MinimapToggle",
+      "MinimapRescan",
+      "MinimapRefresh",
+      "MinimapUpdateHighlight",
+   },
 })
 
 plugin({
    "lukas-reineke/indent-blankline.nvim",
-   event = "BufRead",
+   event = "InsertEnter",
    config = conf.indent_blankline,
 })
 
@@ -38,7 +46,7 @@ plugin({
 
 plugin({
    "numToStr/Comment.nvim",
-   event = "BufRead",
+   event = "InsertEnter",
    config = conf.comment,
    requires = {
       "JoosepAlviste/nvim-ts-context-commentstring",
@@ -47,20 +55,21 @@ plugin({
 })
 
 plugin({
-   "norcalli/nvim-colorizer.lua",
+   "NvChad/nvim-colorizer.lua",
    event = "BufRead",
    config = conf.nvim_colorizer,
 })
 
 plugin({
    "kylechui/nvim-surround",
-   event = "BufRead",
+   event = "InsertEnter",
    config = conf.nvim_surround,
 })
 
 plugin({
    "RRethy/vim-illuminate",
-   event = "BufRead",
+   event = "InsertEnter",
+   requires = "neovim/nvim-lspconfig",
    config = conf.vim_illuminate,
 })
 

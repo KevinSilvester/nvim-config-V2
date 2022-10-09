@@ -6,21 +6,13 @@ plugin({
    cmd = "Telescope",
    opt = true,
    config = conf.telescope,
-   after = { "plenary.nvim", "popup.nvim", "nvim-web-devicons", "nvim-treesitter" },
+   after = { "plenary.nvim", "popup.nvim", "nvim-web-devicons", "nvim-treesitter", "nvim-notify" },
 })
 plugin({
    "nvim-telescope/telescope-fzf-native.nvim",
    after = "telescope.nvim",
    run = "make clean && make",
 })
--- plugin({
---    "nvim-telescope/telescope-project.nvim",
---    after = { "telescope.nvim" },
---    requires = "ahmedkhalf/project.nvim",
---    config = function ()
---       require("telescope").load_extension("projects")
---    end,
--- })
 
 plugin({
    "folke/which-key.nvim",
@@ -49,5 +41,6 @@ plugin({
    "akinsho/toggleterm.nvim",
    opt = true,
    cmd = "ToggleTerm",
+   keys = "<C-b>",
    config = conf.toggleterm,
 })

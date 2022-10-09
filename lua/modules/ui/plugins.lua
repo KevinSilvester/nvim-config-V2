@@ -8,6 +8,13 @@ plugin({ "lunarvim/onedarker.nvim" })
 plugin({ "rebelot/kanagawa.nvim" })
 plugin({ "marko-cerovac/material.nvim" })
 plugin({ "olimorris/onedarkpro.nvim" })
+plugin({
+   "catppuccin/nvim",
+   as = "catppuccin",
+   config = function()
+      require("catppuccin").setup()
+   end,
+})
 
 plugin({
    "goolord/alpha-nvim",

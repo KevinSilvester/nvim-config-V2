@@ -160,20 +160,16 @@ local mappings = {
    l = {
       name = "LSP",
       a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-      f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
-      i = { "<cmd>Mason<cr>", "Info" },
+      c = { "<cmd>lua require('core.utils').lsp.server_capabilities()<cr>", "Get Capabilites" },
+      f = { "<cmd>lua vim.lsp.buf.format({ timeout_ms = 1000 })<cr>", "Format" },
+      h = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Help" },
+      i = { "<cmd>LspInfo<cr>", "Info" },
       o = { "<cmd>lua vim.diagnostic.open_float()<cr>", "Open Float" },
-      j = {
-         "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>",
-         "Next Diagnostic",
-      },
-      k = {
-         "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>",
-         "Prev Diagnostic",
-      },
       l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
-      q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "All Diagnostics" },
+      m = { "<cmd>Mason<cr>", "Mason" },
+      q = { "<cmd>lua vim.diagnostic.setloclist()<cr>", "All Diagnostics" },
       r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
+      R = { "<cmd>lua Telescope lsp_references<cr>", "References" },
    },
 
    s = {
@@ -185,6 +181,7 @@ local mappings = {
       c = { "<cmd>Telescope colorscheme<cr>", "Show Colorschemes" },
       h = { "<cmd>Telescope help_tags<cr>", "Find Help" },
       M = { "<cmd>Telescope man_pages<cr>", "Find Man Pages" },
+      n = { "<cmd>Telescope notify<cr>", "Find Notification" },
       r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
       k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
       C = { "<cmd>Telescope commands<cr>", "Commands" },
