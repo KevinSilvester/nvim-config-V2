@@ -14,7 +14,7 @@ RUN python3 -m ensurepip
 
 
 # install neovim helpers
-RUN npm i -g neovim
+RUN npm i -g neovim ls_emmet
 RUN pip3 install --no-cache-dir --upgrade pip pynvim
 
 # setup rust

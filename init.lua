@@ -1,3 +1,8 @@
+local ok, impatient = pcall(require, "impatient")
+if ok then
+   impatient.enable_profile()
+end
+
 local utils = require("core.utils")
 
 -- Create cache dir and subs dir
@@ -29,8 +34,14 @@ createdir()
 require("core.global")
 require("core.options")
 
+local ok, _ = pcall(vim.cmd, "colorscheme catppuccin")
+if not ok then
+   vim.notify("Failed to load colorscheme")
+end
+
 -- load autocmds
 require("core.autocmds")
+require("core.cmds")
 
 -- load plugins
 local pack = require("core.pack")
@@ -40,8 +51,9 @@ pack.load_compile()
 -- load keymaps
 require("keymap")
 
+-- require("modules.lsp.config")
+
 -- set colorscheme
-local ok, _ = pcall(vim.cmd, "colorscheme material")
-if not ok then
-   return
-end
+
+-- load lsp
+require("lsp")
