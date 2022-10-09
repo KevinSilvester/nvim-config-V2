@@ -75,9 +75,8 @@ end
 
 --@private
 local keymap_set = function(mode, tbl)
-   vim.validate({
-      tbl = { tbl, "table" },
-   })
+   vim.validate({ tbl = { tbl, "table" } })
+
    local len = #tbl
    if len < 2 then
       vim.notify("keymap must has rhs")
@@ -90,10 +89,9 @@ local keymap_set = function(mode, tbl)
 end
 
 local function map(mod)
+   ---@param tbl table
    return function(tbl)
-      vim.validate({
-         tbl = { tbl, "table" },
-      })
+      vim.validate({ tbl = { tbl, "table" } })
 
       if type(tbl[1]) == "table" and type(tbl[2]) == "table" then
          for _, v in pairs(tbl) do
@@ -105,11 +103,55 @@ local function map(mod)
    end
 end
 
+---@private
+local buf_keymap_set = function(mod, bufnr, tbl)
+   vim.validate({
+      bufnr = { bufnr, "number" },
+      tbl = { tbl, "table" },
+   })
+
+   local len = #tbl
+   if len < 2 then
+      vim.notify("keymap must has rhs")
+      return
+   end
+
+   local options = len == 3 and tbl[3] or keymap.new_opts()
+
+   vim.api.nvim_buf_set_keymap(bufnr, mod, tbl[1], tbl[2], options)
+end
+
+local function buf_map(mod)
+   ---@param bufnr number
+   ---@param tbl table
+   return function(bufnr, tbl)
+      vim.validate({
+         bufnr = { bufnr, "number" },
+         tbl = { tbl, "table" },
+      })
+
+      if type(tbl[1]) == "table" and type(tbl[2]) == "table" then
+         for _, v in pairs(tbl) do
+            buf_keymap_set(mod, bufnr, v)
+         end
+      else
+         buf_keymap_set(mod, bufnr, tbl[1])
+      end
+   end
+end
+
 keymap.nmap = map("n")
 keymap.imap = map("i")
 keymap.cmap = map("c")
 keymap.vmap = map("v")
 keymap.xmap = map("x")
 keymap.tmap = map("t")
+
+keymap.buf_nmap = buf_map("n")
+keymap.buf_imap = buf_map("i")
+keymap.buf_cmap = buf_map("c")
+keymap.buf_vmap = buf_map("v")
+keymap.buf_xmap = buf_map("x")
+keymap.buf_tmap = buf_map("t")
 
 return keymap

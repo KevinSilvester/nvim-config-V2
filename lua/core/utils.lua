@@ -3,7 +3,7 @@ local fn = vim.fn
 local M = {}
 
 M.is_nightly = function()
-   return vim.version().minor < 8
+   return vim.version().minor <= 8
 end
 
 ---check whether executable is callable
@@ -27,14 +27,11 @@ end
 ---@return nil
 M.inspect = function(input, yank, open_split)
    local popup_ok, Popup = pcall(require, "nui.popup")
-   if not popup_ok then
+   local split_ok, Split = pcall(require, "nui.split")
+   if not popup_ok or not split_ok then
       return
    end
 
-   local split_ok, Split = pcall(require, "nui.split")
-   if not split_ok then
-      return
-   end
    if input == nil then
       vim.notify("No input provided", vim.log.levels.WARN, { title = "nvim-config" })
       return
@@ -90,6 +87,8 @@ M.inspect = function(input, yank, open_split)
    end, 750)
 end
 
+
+-- stylua: ignore
 ------------------------------------------------------------------------
 --                            fs helpers                              --
 ------------------------------------------------------------------------
@@ -122,6 +121,7 @@ M.fs.mkdir = function(path)
    end
 end
 
+
 -- stylua: ignore
 ------------------------------------------------------------------------
 --                  utility functions for colours                     --
@@ -131,6 +131,9 @@ M.colors = {}
 
 M.colors.get_highlight = function(group)
    local hl = vim.api.nvim_get_hl_by_name(group, true)
+   if hl == nil then
+      return nil
+   end
    local fg = string.format("#%x", hl.foreground)
    local bg = string.format("#%x", hl.background)
    return { fg = fg, bg = bg }
@@ -172,6 +175,30 @@ end
 ---@return string
 M.colors.darken = function(hex, amount, bg)
    return M.colors.blend(hex, bg, math.abs(amount))
+end
+
+
+-- stylua: ignore
+------------------------------------------------------------------------
+--                             lsp utils                              --
+------------------------------------------------------------------------
+M.lsp = {}
+M.lsp.server_capabilities = function()
+   local active_clients = vim.lsp.get_active_clients()
+   local active_client_map = {}
+
+   for index, value in ipairs(active_clients) do
+      active_client_map[value.name] = index
+   end
+
+   vim.ui.select(vim.tbl_keys(active_client_map), {
+      prompt = "Select client:",
+      format_item = function(item)
+         return "capabilites for: " .. item
+      end,
+   }, function(choice)
+      M.inspect(vim.lsp.get_active_clients()[active_client_map[choice]].server_capabilities)
+   end)
 end
 
 return M

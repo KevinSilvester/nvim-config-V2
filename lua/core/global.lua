@@ -23,10 +23,10 @@ vim.env.PATH = vim.env.PATH
 ------------------------------------------------------------------------
 --                          filetype loader                           --
 ------------------------------------------------------------------------
-if utils.is_nightly() then
-   vim.g.did_load_filetypes = 0
-   vim.g.do_filetype_lua = 1
-end
+-- if utils.is_nightly() then
+--    vim.g.did_load_filetypes = 1
+--    vim.g.do_filetype_lua = 1
+-- end
 
 
 ------------------------------------------------------------------------
@@ -124,3 +124,72 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.g.loaded_netrwSettings = 1
 vim.g.loaded_netrwFileHandlers = 1
+
+
+------------------------------------------------------------------------
+--                           lsp servers                              --
+------------------------------------------------------------------------
+vim.g.lsp_servers = {
+   "astro",
+   "awk_ls",
+   "bashls",
+   "clangd",
+   "cmake",
+   "cssls",
+   "dockerls",
+   "dotls",
+   "emmet_ls",
+   "eslint",
+   "gopls",
+   "graphql",
+   "html",
+   "jsonls",
+   "pyright",
+   "rust_analyzer",
+   "sqls",
+   "sumneko_lua",
+   "svelte",
+   "tailwindcss",
+   "taplo",
+   "tsserver",
+   "vuels",
+   "yamlls",
+}
+if vim.g.is_win then
+   vim.list_extend(vim.g.lsp_servers, { "powershell_es" })
+end
+
+-- vim.g.lsp_servers = {
+--    "astro-language-server",
+--    "awk-language-server",
+--    "bash-langauge-server",
+--    "clang-format",
+--    "clangd",
+--    "cmake-language-server",
+--    "codelldb",
+--    "css-lsp",
+--    "dockerfile-language-server",
+--    "dot-langauge-server",
+--    "emmet-ls",
+--    "eslint-lsp",
+--    "flake8",
+--    "gopls",
+--    "graphql-language-service-cli",
+--    "html-lsp",
+--    "json-lsp",
+--    "kotlin-language-server",
+--    "lua-language-server",
+--    "prettier",
+--    "prisma-language-server",
+--    "pyright",
+--    "rust-analyzer",
+--    "sqls",
+--    "stylua",
+--    "svelte-langauge-server",
+--    "tailwindcss-langauge-server",
+--    "taplo",
+--    "typescript-langauge-server",
+--    "vetur-vls",
+--    "vue-language-server",
+--    "yamlls",
+-- }
