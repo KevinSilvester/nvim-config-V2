@@ -44,6 +44,8 @@ if cmp_nvim_lsp_ok then
 end
 
 local on_attach = function(client, bufnr)
+   require("lsp.setup").set_lsp_keymaps(bufnr)
+   require("lsp.setup").attach_navic(client, bufnr)
    -- Modifying a server's capabilities is not recommended and is no longer
    -- necessary thanks to the `vim.lsp.buf.format` API introduced in Neovim
    -- 0.8. Users with Neovim 0.7 needs to uncomment below lines to make tsserver formatting work (or keep using eslint).

@@ -5,10 +5,12 @@ local silent, noremap = key.silent, key.noremap
 local opts = key.new_opts
 local cmd = key.cmd
 
+local M = {}
+
 ---Setup LSP keymaps
 ---@private
 ---@param bufnr number The buffer number
-local set_lsp_keymaps = function(bufnr)
+M.set_lsp_keymaps = function(bufnr)
    -- stylua: ignore
    buf_nmap(bufnr, {
       { "K",     cmd("lua vim.lsp.buf.hover()"),              opts(noremap, silent) },
@@ -28,19 +30,14 @@ end
 ---@private
 ---@param client table The LSP client
 ---@param bufnr number The buffer number
-local attach_navic = function(client, bufnr)
+M.attach_navic = function(client, bufnr)
    vim.g.navic_silence = true
    local status_ok, navic = pcall(require, "nvim-navic")
    if status_ok then
       navic.attach(client, bufnr)
+      vim.opt.winbar = "%{%v:lua.require'nvim-navic'.get_location()%}"
    end
 end
-
---
---------------------------
--- Exportable functions --
---------------------------
-local M = {}
 
 M.diagnostics = function()
    local icons = require("modules.ui.icons").diagnostics
@@ -100,8 +97,8 @@ M.capabilities.textDocument.completion.completionItem.snippetSupport = true
 ---@param client table
 ---@param bufnr number
 M.on_attach = function(client, bufnr)
-   set_lsp_keymaps(bufnr)
-   attach_navic(client, bufnr)
+   M.set_lsp_keymaps(bufnr)
+   M.attach_navic(client, bufnr)
    require("illuminate").on_attach(client)
 
    local format_disable = {

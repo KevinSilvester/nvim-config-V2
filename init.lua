@@ -57,3 +57,4 @@ require("keymap")
 
 -- load lsp
 require("lsp")
+-- require("cmp")
