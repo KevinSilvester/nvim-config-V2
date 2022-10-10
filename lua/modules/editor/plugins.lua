@@ -40,6 +40,7 @@ plugin({
 
 plugin({
    "windwp/nvim-autopairs",
+   after = "nvim-cmp",
    event = "InsertEnter",
    config = conf.nvim_autopairs,
 })

@@ -56,5 +56,5 @@ require("keymap")
 -- set colorscheme
 
 -- load lsp
-require("lsp")
+-- require("lsp")
 -- require("cmp")
